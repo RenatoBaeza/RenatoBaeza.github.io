@@ -12,7 +12,7 @@ import { sideQuests } from "@/data/profile"
 import { cn } from "@/lib/utils"
 
 export function SideQuests() {
-  const [featured, ...archive] = sideQuests
+  const [featured, ...rest] = sideQuests
 
   return (
     <Section id="side-quests">
@@ -20,17 +20,14 @@ export function SideQuests() {
         <SectionHeading
           index="06 / SIDE QUESTS"
           title="Things I Built"
-          subtitle="Shipped on my own time. The archive entries are bootcamp builds, kept for the record."
+          subtitle="Shipped on my own time, outside the day job."
           icon={Compass}
         />
       </Reveal>
 
       <Reveal delay={60}>
         <Panel
-          className={cn(
-            "mb-5 overflow-hidden p-0 clip-hud",
-            tierRing[featured.tier]
-          )}
+          className={cn("overflow-hidden p-0 clip-hud", tierRing[featured.tier])}
         >
           <div className="grid gap-0 md:grid-cols-[1fr_auto]">
             <div className="p-6 sm:p-8">
@@ -73,29 +70,14 @@ export function SideQuests() {
         </Panel>
       </Reveal>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {archive.map((quest, i) => (
-          <Reveal key={quest.name} delay={i * 60}>
-            <Panel className="h-full overflow-hidden p-0 clip-hud">
-              {quest.image && (
-                <div className="h-32 overflow-hidden border-b border-border/60 bg-background/60">
-                  <img
-                    src={quest.image}
-                    alt={`${quest.name} screenshot`}
-                    loading="lazy"
-                    className="size-full object-cover object-top opacity-70 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
-                  />
-                </div>
-              )}
-              <div className="p-5">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-display text-sm font-black uppercase tracking-[0.06em] text-foreground">
-                    {quest.name}
-                  </h3>
-                  <Badge variant="outline" className="clip-notch">
-                    Archive
-                  </Badge>
-                </div>
+      {rest.length > 0 && (
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {rest.map((quest, i) => (
+            <Reveal key={quest.name} delay={i * 60}>
+              <Panel className="h-full p-5 clip-hud">
+                <h3 className="font-display text-sm font-black uppercase tracking-[0.06em] text-foreground">
+                  {quest.name}
+                </h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                   {quest.blurb}
                 </p>
@@ -106,11 +88,11 @@ export function SideQuests() {
                     </Badge>
                   ))}
                 </div>
-              </div>
-            </Panel>
-          </Reveal>
-        ))}
-      </div>
+              </Panel>
+            </Reveal>
+          ))}
+        </div>
+      )}
     </Section>
   )
 }

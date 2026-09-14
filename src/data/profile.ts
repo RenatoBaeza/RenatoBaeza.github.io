@@ -299,7 +299,6 @@ export type SideQuest = {
   name: string
   blurb: string
   href?: string
-  image?: string
   tier: Tier
   stack: string[]
 }
@@ -312,33 +311,5 @@ export const sideQuests: SideQuest[] = [
     href: "https://dividir.cl",
     tier: "legendary",
     stack: ["AI", "Web App", "Automation"],
-  },
-  {
-    name: "Beta Curriculum",
-    blurb: "Full Stack JavaScript bootcamp build from DesafíoLatam.",
-    image: "/assets/img/des1.png",
-    tier: "rare",
-    stack: ["HTML", "CSS", "JavaScript"],
-  },
-  {
-    name: "Pizzas",
-    blurb: "Ordering flow exercise built during the DesafíoLatam bootcamp.",
-    image: "/assets/img/des2.png",
-    tier: "rare",
-    stack: ["JavaScript", "Bootstrap"],
-  },
-  {
-    name: "Iguanas",
-    blurb: "Responsive catalogue build from the DesafíoLatam bootcamp.",
-    image: "/assets/img/des3.png",
-    tier: "rare",
-    stack: ["JavaScript", "Responsive"],
-  },
-  {
-    name: "Cuppon",
-    blurb: "Coupon marketplace clone built during the DesafíoLatam bootcamp.",
-    image: "/assets/img/des4.png",
-    tier: "rare",
-    stack: ["React", "NodeJS"],
   },
 ]
