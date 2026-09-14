@@ -16,7 +16,7 @@ stat sheet, campaign log, loadout and trophy case. Content is transcribed from
 ```bash
 npm install
 npm run dev      # dev server on :5173
-npm run build    # type check, then production build into dist/
+npm run build    # type check, then production build into docs/
 npm run preview  # serve the production build
 ```
 
@@ -31,10 +31,15 @@ on badges, panel borders and skill chips.
 
 ## Deployment
 
-`.github/workflows/deploy.yml` builds the site and publishes it to GitHub Pages
-on every push to `main`.
+No CI needed. The production build lives in `docs/` and is committed:
 
-One-time setup: in **Settings → Pages**, set **Source** to **GitHub Actions**.
+```bash
+npm run build
+git add docs && git commit -m "Rebuild site" && git push
+```
+
+One-time setup: in **Settings → Pages**, set **Source** to **Deploy from a
+branch**, branch **main**, folder **/docs**.
 
 ## Structure
 
