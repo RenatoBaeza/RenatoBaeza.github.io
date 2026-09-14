@@ -50,3 +50,8 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # Default is 10 minutes. A Pages deployment that is going to succeed
+          # does so in well under a minute, so a long wait here only delays the
+          # signal that something is wrong with the Pages configuration.
+          timeout: 240000
